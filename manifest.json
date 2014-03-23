@@ -1,0 +1,38 @@
+﻿{
+	"manifest_version": 2,
+	"name": "IP Inquire",
+	"version": "0.1.0",
+	"description": "IP Inquire Extension",
+	"icons": {
+		"48": "img/icon48.png",
+		"72": "img/icon72.png",
+		"96": "img/icon96.png",
+		"144": "img/icon144.png"
+	},
+	"browser_action": {
+		"default_icon": {
+			"19": "img/icon19.png"
+		},
+		"default_title": "IP Inquire",
+		"default_popup": "popup.html"
+	},
+	"options_page": "options.html",
+	"background": {
+		"page": "main.html"
+	},
+	"content_security_policy": "default-src 'self'  chrome-extension-resource: ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval';  connect-src *; frame-src *;",
+	"externally_connectable": {
+	"matches": ["*://*.example.com/*"]
+	},
+	"web_accessible_resources": [
+		"*"
+	],
+	"permissions": [
+		"proxy",
+		"*://*/*",
+		"tabs",
+		"background",
+		"clipboardWrite",
+		"notifications"
+	]
+}

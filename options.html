@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>IP Inquire</title>
+		<script type="text/javascript" src="js/options.js"></script>
+		<style type="text/css">
+html body{
+	padding:0;
+	margin:0;
+	width:100%;
+	height:100%;
+}
+.options {
+	width: 80%;
+	min-width: 320px;
+	max-width: 640px;
+	margin: auto;
+	padding: 5px;
+	border: solid 1px #abc;
+	background-color: hsl(216, 56%, 98%);
+	font: menu;
+}
+.header {
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	color: #4e607d;
+	text-shadow: #CCC 1px 1px 3px;
+	border-radius: 6px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(0.48, hsl(217, 73%, 97%)), color-stop(0.51, hsl(217, 62%, 95%)));
+	-webkit-box-shadow: 0 1px 2px #ddd;
+}
+.content {
+	border-radius: 2px;
+}
+.selected{
+    font-weight: bold;
+    background-color: rgb(230,240,250);
+}
+.selected:hover{
+    background-color: rgb(230,240,250);	
+}
+#profilelist td{
+	border-radius:2px;
+	padding: 0.5em 0.5em;
+	border: solid 1px rgba(0,0,0,0);
+}
+#profilelist td:hover{
+	border: solid 1px #EEEEEE;
+	background-color: #EEEEEE;
+}
+#profiledetail{
+	padding: 1.5em 1em;
+}
+		</style>
+	</head>
+	<body style="">
+		<br/><br/>
+		<div class="options header">
+			<img src="img/icon48.png" style="float:left;margin-right:12px;"></img>
+			<div style="font-size:18pt;">IP Inquire 选项</div>
+		</div>
+		<br/>
+		<div class="options content">
+			<table style="width:100%;padding:1em 2em;">
+				<tbody>
+					<tr>
+						<td style="width:30%;">服务器地址：</td>
+						<td style="width:15px;"></td>
+						<td><input id="server" type="url" style="width:100%;"></input></td>
+					</tr>
+					<tr>
+						<td>本机标识：</td>
+						<td style="width:15px;"></td>
+						<td><input id="identity" type="text" style="width:100%;"></input></td>
+					</tr>
+					<tr>
+						<td>注册心跳间隔：</td>
+						<td style="width:15px;"></td>
+						<td><input id="interval" type="number" style="width:100%;"></input></td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td style="text-align:center;"><button id="saveconfigs" style="min-width:30%;">保存</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<br/>
+		<div class="options content">
+			<table style="width:100%;padding:1em 2em;">
+				<tbody>
+					<tr style="font-weight:bold;font-size:1.2em;">
+						<th>终端列表</th>
+						<td style="width:15px;"></td>
+						<th>详细配置</th>
+					</tr>
+					<tr>
+						<td style="width:30%;vertical-align:top;border:solid 1px #d1dadd;">
+							<table style="width:100%;height:100%">
+								<tbody id="profilelist">
+									<tr>
+										<td id="newprofile" class="selected">新建</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<td style="width:15px;"></td>
+						<td style="vertical-align:top;border:solid 1px #d1dadd;">
+							<table id="profiledetail" style="width:100%;">
+								<tbody>
+									<tr>
+										<td style="width:40%;">终端名称：</td>
+										<td colspan="2"><input id="pname" type="text" style="width:100%;"></input></td>
+									</tr>
+									<tr>
+										<td colspan="3">
+											<hr>
+										</td>
+									</tr>
+									<tr>
+										<td>终端标识：</td>
+										<td colspan="2"><input id="pid" type="text" style="width:100%;"></input></td>
+									</tr>
+									<tr>
+										<td>查询更新时间：</td>
+										<td colspan="2"><input id="pinterval" type="number" value="30" style="width:100%;"></input></td>
+									</tr>
+									<tr>
+										<td colspan="3"><strong>操作</strong></td>
+									</tr>
+									<tr>
+										<td style="text-align:center;">打开文件：</td>
+										<td style="white-space:nowrap;">
+											<input id="pexecute" type="text" style="width:100%;"></input>
+										</td>
+										<td>
+											<button onclick="document.getElementById('file').click();" style="float:right;<!--position:relative;top:-50px;-->">...</button>
+											<input id="file" type="file" style="display:none;" accept="application/x-msdownload"></input>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align:center;">运行参数：</td>
+										<td colspan="2"><input id="parguments" type="text" style="width:100%;"></input></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3"><hr></td>
+					</tr>
+					<tr>
+						<td colspan="2"></td>
+						<td style="text-align:center;">
+							<button id="saveprofile" style="min-width:25%;">保存</button>
+							<button id="removeprofile" style="min-width:25%;">删除</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
