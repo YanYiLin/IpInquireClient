@@ -169,7 +169,9 @@ function updateProfile( p ){
 	}
 	xhr.open( "GET", url );
 	xhr.send();
-	p.t=setTimeout( arguments.callee, p.interval );
+	p.t=setTimeout( function(){
+		updateProfile(p);
+	}, p.interval );
 }
 function updateProfiles(){
 	for ( var i in profiles ) {
