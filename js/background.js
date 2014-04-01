@@ -25,7 +25,7 @@ function ultDatestring(d){
 	return d.getFullYear()+"-"+ultZeroize(d.getMonth()+1)+"-"+ultZeroize(d.getDate())+" "+ultZeroize(d.getHours())+":"+ultZeroize(d.getMinutes())+":"+ultZeroize(d.getSeconds());
 }
 /**
- * 
+ * Generate number with range [100000-999999]
  */
 function ultRandomId(){
 	return Math.ceil(Math.random()*99999+100000);
@@ -131,10 +131,10 @@ function publicTs(){
 	}
 	return configs.ts;
 }
-function notifyPopup(){
+function notifyPopup(p){
 	var pops = chrome.extension.getViews({type:"popup"});
 	for ( var i in pops ) {
-		pops[i].updatePublics();
+		p?pops[i].updateProfile(p):pops[i].updatePublics();
 	}
 }
 function publicConfigs(){
@@ -162,6 +162,7 @@ function updateProfile( p ){
 					p.valid = false;
 				}
 				p.ts = ultDatestring();
+				notifyPopup( p );
 			break;
 			default:
 			break;
@@ -183,6 +184,18 @@ function removeProfile(id){
 	if ( p ){
 		clearTimeout(p.t);
 		delete profiles[id];
+	}
+}
+function resetProfile( p ){
+	p.ip=null;
+	p.ts=null;
+}
+function actionProfile( p ){
+	var exec=p.execute,args=p.arguments;
+	if ( 0==exec.indexOf("http://") || 0==exec.indexOf("https://") ) {
+		chrome.tabs.getSelected( null, function (tab) { // open a new tab next to currently selected tab
+			chrome.tabs.create( {url:exec,index:tab.index+1} );
+		} );
 	}
 }
 
